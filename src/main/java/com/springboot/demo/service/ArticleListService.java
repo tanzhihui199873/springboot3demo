@@ -1,6 +1,7 @@
 package com.springboot.demo.service;
 
 import com.springboot.demo.model.Nav;
+import com.springboot.demo.model.Page;
 import org.springframework.http.HttpRequest;
 
 import java.util.List;
@@ -16,8 +17,8 @@ import java.util.Map;
  **/
 
 public interface ArticleListService {
-    public List<Map> queryArticleMapByPage(int p, String nav_id, String article_title) ;
-    public int  queryArticleCount(String nav_id, String article_title);
-    public  List<Nav> queryNavAll();
+     List<Map> queryArticleMapByPage(int p,Page page) ;
+     int  queryArticleCount(Page page);
+      List<Nav> queryNavAll();
 
 }

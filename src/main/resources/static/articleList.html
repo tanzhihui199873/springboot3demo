@@ -8,8 +8,8 @@
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-    <script src="../static/js/articleList.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
 <div class="main-frame">
@@ -31,13 +31,10 @@
             <table class="tab" cellspacing="0">
                 <tr>
                     <td colspan="5">
-                        <form action="articleList.jsp" method="post" id="frm">
+                        <form  method="post" >
                             <label>新闻类别：</label>
-                            <select name="nav_id">
+                            <select name="nav_id" id="nav_id">
                                 <option value="">==请选择新闻类别==</option>
-                                <option value="">1</option>
-                                <option value="">2</option>
-                                <option value="">3</option>
                             </select>
                             <label>标题</label>
                             <input type="text" name="article_title" id="article_title" value=""/>
@@ -54,30 +51,26 @@
                     <td>3</td>
                     <td>4</td>
                 </tr>
-               <!-- <tr>
+                <tr>
                     <td colspan="5" class="Page">
-                        <span>总共<%=rows %>条记录</span><span>当前为第<%=p+1%>页</span>
-                        <%if(p>0) {%>
-                        <a href="javascript:void(0)" onclick="go2Page(0)">第一页</a>
-                        <a href="javascript:void(0)" onclick="go2Page(<%=p-1%>)">上一页</a>
-                        <%}%>
-                        <%if(p<totalPages-1){ %>
-                        <a href="javascript:void(0)" onclick="go2Page(<%=p+1%>)">下一页</a>
-                        <a href="javascript:void(0)" onclick="go2Page(<%=totalPages-1%>)">最后一页</a>
-                        <%} %>
-                        <span>共<%=totalPages %>页</span>
-                        <%if(totalPages>1){ %>
+                        <span id="rows"></span>
+                        <span id="nowPage"></span>
+
+                        <a href="javascript:void(0)" >第一页</a>
+                        <a href="javascript:void(0)" id="previousPage">上一页</a>
+
+                        <a href="javascript:void(0)" id="nextPage">下一页</a>
+                        <a href="javascript:void(0)" id="lastPage">最后一页</a>
+
+                        <span id="pageCount"></span>
+
                         <span>转到第
-	  					<select onchange="go2Page(this.value)">
-	  					<%for(int j=0;j<totalPages;j++){ %>
-	  						<option value="<%=j%>"<%=j==p?"selected='selected'":""%>><%=j+1%></option>
-                            <%} %>
-	  					</select>
-	  					页
-	  				</span>
-                        <%} %>
+	  					<input style="width: 50px;height: 20px">
+	  					    页
+	  				    </span>
+
                     </td>
-                </tr>-->
+                </tr>
                 <tr><td colspan="5" style="border-bottom:0">
                     <a class="btn" href="addArticle.jsp">添加新闻</a>
                     <a class="btn" href="javascript:void(0)" onclick="updateNews()">修改</a>
@@ -94,14 +87,17 @@
     <h2 class="win-title">修改新闻类别<span onclick="closeNavWindow(0);">&times;</span></h2>
     <iframe src="" id="update-win"></iframe>
 </div>
+<script  src="common/jquery/jquery-3.4.1.min.js"></script>
+<script src="js/articleList.js"></script>
 <script type="text/javascript">
 
-    window.οnlοad=function(){
-
-    }
-    function go2Page(n){
-        document.getElementById("go_page_number").value=n;
-        document.getElementById("frm").submit();
+    $(document).ready(function(){
+        //do something
+        init(0,null,null)
+    })
+    function go2Page(p){
+       /* document.getElementById("go_page_number").value=n;*/
+        init(p);
     }
     function selectedRow(){
         var ms = document.getElementsByName("rad");

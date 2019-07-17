@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.springboot.demo.mapper.ArticleListMapper" >
     <resultMap id="BaseResultMap" type="com.springboot.demo.model.Nav" >
-        <id column="nav_id" property="id" jdbcType="INTEGER" />
-        <result column="nav_name" property="username" jdbcType="VARCHAR" />
-        <result column="nav_feight" property="password" jdbcType="VARCHAR" />
+        <id column="nav_id" property="nav_id" jdbcType="VARCHAR" />
+        <result column="nav_name" property="nav_name" jdbcType="VARCHAR" />
+        <result column="nav_feight" property="nav_feight" jdbcType="INTEGER" />
     </resultMap>
 
 
@@ -23,7 +23,7 @@
         </if>
         desc limit #{start} , #{perPage}
     </select>
-    <select id="queryArticleCount" resultType="Map" parameterType="com.springboot.demo.model.Page">
+    <select id="queryArticleCount" resultType="java.lang.Integer" parameterType="com.springboot.demo.model.Page">
         select count(*) from article
         <if test="nav_id!=null and nav_id != ''">
             ,nav
@@ -37,7 +37,7 @@
             </if>
         </where>
     </select>
-    <select id="queryNavAll" resultType="Map" parameterType="com.springboot.demo.model.Page">
+    <select id="queryNavAll" resultMap="BaseResultMap" >
         select nav_id,nav_name,nav_feight from nav order by nav_feight asc
     </select>
 

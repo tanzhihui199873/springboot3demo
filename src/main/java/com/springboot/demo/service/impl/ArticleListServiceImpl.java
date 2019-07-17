@@ -23,22 +23,21 @@ public class ArticleListServiceImpl implements ArticleListService {
     private int perPage = 10;
     @Autowired
     ArticleListMapper articleListMapper;
-    public List<Map> queryArticleMapByPage(int p, String nav_id, String article_title) {
-        Page page = new Page();
+    public List<Map> queryArticleMapByPage(int p,Page page) {
         int start = p*perPage;
         int ii = start+1;
         page.setStart(start);
         page.setPerPage(perPage);
-        page.setNav_id(nav_id);
-        page.setArticle_title(article_title);
         List<Map> maps = articleListMapper.queryArticleMapByPage(page);
         return maps;
     }
-    public int  queryArticleCount(String nav_id,String article_title){
-        return 0;
+    public int  queryArticleCount(Page page){
+        int i = articleListMapper.queryArticleCount(page);
+        return i;
     }
     public  List<Nav> queryNavAll(){
-        return null;
+        List<Nav> navs = articleListMapper.queryNavAll();
+        return navs;
     }
 
 }

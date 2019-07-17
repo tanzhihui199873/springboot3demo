@@ -19,6 +19,6 @@ import java.util.Map;
 @Component
 public interface ArticleListMapper {
       List<Map> queryArticleMapByPage(Page page) ;
-      int  queryArticleCount(String nav_id,String article_title);
+      int  queryArticleCount(Page page);
        List<Nav> queryNavAll();
 }
