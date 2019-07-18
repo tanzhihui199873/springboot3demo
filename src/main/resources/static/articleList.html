@@ -19,38 +19,37 @@
     <div class="left-menu">
         <h1 class="title">导航菜单</h1>
         <ul>
-            <li><a href="admin/managerList.jsp">用户管理</a></li>
-            <li><a href="admin/navList.jsp">类别管理</a></li>
-            <li><a href="admin/articleList.jsp">文章管理</a></li>
-            <li><a href="admin/exit.jsp">退出系统</a></li>
+            <li><a href="managerList.html">用户管理</a></li>
+            <li><a href="navList.html">类别管理</a></li>
+            <li><a href="articleList.html">文章管理</a></li>
+            <li><a href="exit.html">退出系统</a></li>
         </ul>
     </div>
     <div class="right">
         <div class="admin">
             <h1 class="title">新闻信息管理<a href="main.jsp" class="back-btn">返回主页</a></h1>
             <table class="tab" cellspacing="0">
-                <tr>
-                    <td colspan="5">
-                        <form  method="post" >
-                            <label>新闻类别：</label>
-                            <select name="nav_id" id="nav_id">
-                                <option value="">==请选择新闻类别==</option>
-                            </select>
-                            <label>标题</label>
-                            <input type="text" name="article_title" id="article_title" value=""/>
-                            <input type="hidden" name="p" id="go_page_number" value="">
-                            <input type="submit" value="搜索"/>
-                        </form>
-                    </td>
-                </tr>
-                <tr><td style="width:40px;">选择</td><td class="text-center" style="width:40px;">序号</td><td >新闻标题</td><td>类别名称</td><td>发布时间</td></tr>
-                <tr>
-                    <td><input type="radio" name="rad" value=""/></td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <td colspan="5">
+                            <!--<form >-->
+                                <label>新闻类别：</label>
+                                <select name="nav_id" id="nav_id">
+                                    <option value="">==请选择新闻类别==</option>
+                                </select>
+                                <label>标题</label>
+                                <input type="text" name="article_title" id="article_title" value=""/>
+                                <input type="hidden" name="p" id="go_page_number" value="">
+                                <input type="button" value="搜索" id="t_search"/>
+                            <!--</form>-->
+                        </td>
+                    </tr>
+
+                    <tr><td style="width:40px;">选择</td><td class="text-center" style="width:40px;">序号</td><td >新闻标题</td><td>类别名称</td><td>发布时间</td></tr>
+
+                </thead>
+                <tbody id="t_content">
+                </tbody>
                 <tr>
                     <td colspan="5" class="Page">
                         <span id="rows"></span>
@@ -72,7 +71,7 @@
                     </td>
                 </tr>
                 <tr><td colspan="5" style="border-bottom:0">
-                    <a class="btn" href="addArticle.jsp">添加新闻</a>
+                    <a class="btn" href="addArticle.html">添加新闻</a>
                     <a class="btn" href="javascript:void(0)" onclick="updateNews()">修改</a>
                     <a class="btn" href="javascript:void(0)" onclick="deleteNews()">删除</a>
                 </td></tr>
@@ -93,8 +92,14 @@
 
     $(document).ready(function(){
         //do something
-        init(0,null,null)
+        init(0)
     })
+
+    $("#t_search").click(function(){
+        init(0);
+    })
+
+
     function selectedRow(){
         var ms = document.getElementsByName("rad");
         var obj=null;
