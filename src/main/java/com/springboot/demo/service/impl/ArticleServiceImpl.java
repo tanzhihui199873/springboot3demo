@@ -44,4 +44,16 @@ public class ArticleServiceImpl implements ArticleService {
         boolean b = articleMapper.insertArticle(article);
         return b;
     }
+    public Article queryArticleById(String article_id){
+        Article article = articleMapper.queryArticleById(article_id);
+        return article;
+    }
+    public boolean editArticle(Article article) {
+        boolean b = articleMapper.editArticle(article);
+        return b;
+    }
+    public boolean deleteNewsById(String article_id){
+        boolean b = articleMapper.deleteNewsById(article_id);
+        return b;
+    }
 }

@@ -28,6 +28,11 @@ public class ArticleListController {
         map.put("navList", articleService.queryNavAll());
         return map;
     }
+    @PostMapping("/api/deleteNewsById" )
+    public boolean deleteNewsById(String article_id){
+        boolean b = articleService.deleteNewsById(article_id);
+        return b;
+    }
 
 
 }

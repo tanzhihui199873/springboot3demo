@@ -124,7 +124,21 @@
         var obj = selectedRow();
         if(obj==null)return;
         if(confirm("^_^ 删除后数据不能恢复，您确认要删除当前新闻吗？")){
-            location="admin/deleteNews?article_id="+obj.value;
+            /*location="admin/deleteNews?article_id="+obj.value;*/
+            $.ajax({
+                type:'post',
+                dataType:'json',
+                data:{article_id:obj.value}, //传接收到的参数id
+                url:'/api/deleteNewsById',
+                success:function(data){
+                    if (data){
+                        init(0);
+                        alert("删除成功！");
+                    } else {
+                        alert("删除失败！");
+                    }
+                }
+            })
         }
     }
     function updateNavWindow(url){

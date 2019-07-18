@@ -59,14 +59,14 @@
         </div>
         <div class="right">
             <div class="admin">
-                <h1 class="title">修改新闻<a href="admin/articleList.jsp" class="back-btn">返回</a></h1>
-                <form name="frm" action="admin/editArtitlce" id="frm" method="post">
-                    <input name="article_id" value="<%=article.getArticle_id()%>" type="hidden"/>
+                <h1 class="title">修改新闻<a href="articleList.html" class="back-btn">返回</a></h1>
+                <form name="frm"  id="frm">
+                    <input id="article_id" name="article_id"  type="hidden"/>
                     <table>
                         <tr>
                             <td>新闻标题：</td>
                             <td><input id="article_title" name=article_title
-                                       autocomplete="off" maxlength="300" type="text" value="<%=article.getArticle_title()%>"/></td>
+                                       autocomplete="off" maxlength="300" type="text"/></td>
                             <td id="err_article_title"></td>
                         </tr>
                         <tr><td>新闻类别：</td><td>
@@ -78,14 +78,14 @@
                         <tr><td>发布时间：</td>
                             <td>
                                 <input id="article_date" name="article_date"
-                                       autocomplete="off" maxlength="20" type="text" value="<%=article.getArticle_date() %>"
+                                       autocomplete="off" maxlength="20" type="text"
                                        onClick="WdatePicker()" readonly="readonly"/>
                             </td>
                             <td id="err_article_date"></td></tr>
                         <tr>
                             <td valign="top">新闻正文：</td>
                             <td colspan="2">
-                                <textarea name="content1" rows="" cols="" style="width:680px;height:400px;"><%=com.tools.MyFuns.htmlspecialchars(article.getArticle_content()) %></textarea>
+                                <textarea id="article_content" name="article_content" rows="" cols="" style="width:680px;height:400px;"></textarea>
                             </td>
                         </tr>
                         <tr><td></td><td><a class="btn" onclick="startPost();" href="javascript:void(0)">保存</a></td></tr>

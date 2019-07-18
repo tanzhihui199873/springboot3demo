@@ -23,4 +23,7 @@ public interface ArticleMapper {
     int  queryArticleCount(Page page);
     List<Nav> queryNavAll();
     boolean insertArticle(Article article);
+    Article queryArticleById(String article_id);
+    boolean editArticle(Article article);
+    boolean deleteNewsById(String article_id);
 }

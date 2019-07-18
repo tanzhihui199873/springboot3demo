@@ -7,6 +7,15 @@
         <result column="nav_feight" property="nav_feight" jdbcType="INTEGER" />
     </resultMap>
 
+    <resultMap id="Article" type="com.springboot.demo.model.Article" >
+        <id column="article_id" property="article_id" jdbcType="VARCHAR" />
+        <result column="article_title" property="article_title" jdbcType="VARCHAR" />
+        <result column="article_date" property="article_date" jdbcType="INTEGER" />
+        <result column="article_content" property="article_content" jdbcType="VARCHAR" />
+        <result column="nav_id" property="nav_id" jdbcType="INTEGER" />
+    </resultMap>
+
+
 
     <select id="queryArticleMapByPage" resultType="Map" parameterType="com.springboot.demo.model.Page">
         select
@@ -46,4 +55,17 @@
         article(article_id,article_title,article_date,article_content,nav_id)
         values(#{article_id},#{article_title},#{article_date},#{article_content},#{nav_id})
     </insert>
+    <select id="queryArticleById" resultMap="Article" parameterType="java.lang.String" >
+        select article_id,article_title,article_date,article_content,nav_id
+        from article
+        where article_id=#{article_id}
+    </select>
+    <update id="editArticle"  parameterType="com.springboot.demo.model.Article">
+        update article
+        set article_title=#{article_title},article_date=#{article_date},article_content=#{article_content},nav_id=#{nav_id}
+		where article_id=#{article_id}
+    </update>
+    <delete id="deleteNewsById"  parameterType="java.lang.String">
+        delete from article where article_id=#{article_id}
+    </delete>
 </mapper>
