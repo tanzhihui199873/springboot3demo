@@ -17,7 +17,7 @@
     <script charset="utf-8" src="common/kindeditor/plugins/code/prettify.js"></script>
     <script>
         KindEditor.ready(function(K) {
-            var editor1 = K.create('textarea[name="content1"]', {
+            var editor1 = K.create('textarea[name="article_content"]', {
                 cssPath : 'common/kindeditor/plugins/code/prettify.css',
                /* uploadJson : 'common/upload_json.jsp',
                 fileManagerJson : 'common/file_manager_json.jsp',*/
@@ -79,7 +79,7 @@
                     <tr>
                         <td valign="top">新闻正文：</td>
                         <td colspan="2">
-                            <textarea name="content1" rows="" cols="" style="width:680px;height:400px;" ></textarea>
+                            <textarea name="article_content" rows="" cols="" style="width:680px;height:400px;" ></textarea>
                         </td>
                     </tr>
                     <tr><td></td><td><a class="btn" onclick="startPost();" href="javascript:void(0)">保存</a></td></tr>

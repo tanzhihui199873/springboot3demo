@@ -7,11 +7,11 @@ function init() {
         success:function(data) {
             $("#nav_id").html("");
             $("#nav_id").append("<option value=''>==请选择新闻类别==</option>");
-            for (var i = 0; i < data.navList.length; i++) {
-                if (data.navList[i].nav_id == nav_id) {
-                    $("#nav_id").append("<option value=" + data.navList[i].nav_id + " selected='selected'>" + data.navList[i].nav_name + "</option>")
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].nav_id == nav_id) {
+                    $("#nav_id").append("<option value=" + data[i].nav_id + " selected='selected'>" + data[i].nav_name + "</option>")
                 } else {
-                    $("#nav_id").append("<option value=" + data.navList[i].nav_id + " >" + data.navList[i].nav_name + "</option>")
+                    $("#nav_id").append("<option value=" + data[i].nav_id + " >" + data[i].nav_name + "</option>")
                 }
 
             }
@@ -42,12 +42,21 @@ function startPost(){
 }
 
 function insertArticle() {
+    var article_title=$("#article_title").val();
+    var nav_id=$("#nav_id").val();
+    var article_date=$("#article_date").val();
+    var article_content=$("#article_content").val();
     $.ajax({
         type:'post',
         dataType:'json',
-        data:{article_id:article_id,article_title:article_title,article_date:article_date,article_content:article_content,nav_id:nav_id}, //传接收到的参数id
+        data:{nav_id:nav_id,article_title:article_title,article_date:article_date,article_content:article_content}, //传接收到的参数id
         url:'/api/insertArticle',
         success:function(data) {
+            if (data){
+                alert("添加成功");
+            } else {
+                alert("添加失败！");
+            }
 
         }
     })
