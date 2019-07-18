@@ -476,9 +476,9 @@ var $dp, WdatePicker;
 				V[O].body.removeChild($dp.dd);
 			if (_.$dpPath == "")
 				F(A);
-			var B = "<iframe style=\"width:1px;height:1px\" src=\""
+			var B = "<iframe style=\"width:1px;height:1px\" src="
 					+ _.$dpPath
-					+ "My97DatePicker.htm\" frameborder=\"0\" border=\"0\" scrolling=\"no\"></iframe>";
+					+ "\"My97DatePicker.htm\" frameborder=\"0\" border=\"0\" scrolling=\"no\"></iframe>";
 			if ($dp.eCont) {
 				$dp.eCont.innerHTML = B;
 				Z($dp.eCont.childNodes[0], Y)
