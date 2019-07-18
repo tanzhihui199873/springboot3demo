@@ -27,7 +27,7 @@
     </div>
     <div class="right">
         <div class="admin">
-            <h1 class="title">新闻信息管理<a href="main.jsp" class="back-btn">返回主页</a></h1>
+            <h1 class="title">新闻信息管理<a href="main.html" class="back-btn">返回主页</a></h1>
             <table class="tab" cellspacing="0">
                 <thead>
                     <tr>
@@ -117,7 +117,7 @@
     function updateNews(){
         var obj = selectedRow();
         if(null == obj)return;
-        location="admin/editArticle.jsp?article_id="+obj.value;
+        location="editArticle.html?article_id="+obj.value;
     }
 
     function deleteNews(){

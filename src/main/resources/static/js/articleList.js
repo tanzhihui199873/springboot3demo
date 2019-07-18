@@ -24,7 +24,7 @@ function init(p) {
             if (rows!=0){
                 for (var i=0;i<data.list.length;i++) {
                     $("#t_content").append("<tr>\n" +
-                        "                        <td><input type=\"radio\" name=\"rad\" /></td>\n" +
+                        "                        <td><input type='radio' name='rad' value="+data.list[i].article_id+" autocomplete='off'/></td>\n" +
                         "                        <td>"+pagerows+++"</td>\n" +
                         "                        <td>"+data.list[i].article_title+"</td>\n" +
                         "                        <td>"+data.list[i].nav_name+"</td>\n" +
